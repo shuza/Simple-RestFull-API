@@ -1,7 +1,7 @@
 package daos;
 
 
-import Settings.DbSetting;
+import Settings.MongoDbSetting;
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -13,8 +13,8 @@ public class MongoDbDao {
     private MongoDbDao() {
         Morphia morphia = new Morphia();
         morphia.mapPackage("models");
-        datastore = morphia.createDatastore(new MongoClient(DbSetting.MONGODB_HOST,
-                DbSetting.MONGODB_PORT), DbSetting.MONGODB_DB_NAME_SESSION);
+        datastore = morphia.createDatastore(new MongoClient(MongoDbSetting.MONGODB_HOST,
+                MongoDbSetting.MONGODB_PORT), MongoDbSetting.MONGODB_DB_NAME_SESSION);
         datastore.ensureIndexes();
     }
 

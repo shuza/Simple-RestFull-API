@@ -3,11 +3,13 @@
 # ~~~~
 
 # Home page
-GET        /                                           controllers.Application.index
+GET         /                                           controllers.Application.index
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file                               controllers.Assets.versioned(path="/public", file)
+GET         /assets/*file                               controllers.Assets.versioned(path="/public", file)
 
-GET        /test/postgre/connection                    controllers.PostgreController.testConnection()
+GET         /test/postgre/connection                    controllers.PostgreController.testConnection()
 
-GET        /test/postgre/createDB/:databaseName        controllers.PostgreController.createDatabase(databaseName:String)
+GET         /test/postgre/createDB/:databaseName        controllers.PostgreController.createDatabase(databaseName:String)
+
+POST        /user/create                                controllers.UserController.createUser()

@@ -9,6 +9,7 @@ public class UserModel {
 
     @Id
     private ObjectId objectId;
+    private String email;
     private String name;
     private String surName;
     private String phone;
@@ -22,6 +23,14 @@ public class UserModel {
 
     public void setObjectId(ObjectId objectId) {
         this.objectId = objectId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
