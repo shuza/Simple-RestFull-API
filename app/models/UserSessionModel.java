@@ -1,5 +1,7 @@
 package models;
 
+import com.eclipsesource.json.JsonObject;
+import constants.ParamConstant;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -15,7 +17,18 @@ public class UserSessionModel extends CommonModel {
     private String duration;
     private int loginStatus;
     private String refreshToken;
-    private String companyRouteId;
+    private int companyRouteId;
+
+    public UserSessionModel() {
+        userId = "";
+        token = "";
+        startDateTime = "";
+        endDateTime = "";
+        duration = "";
+        loginStatus = 0;
+        refreshToken = "";
+        companyRouteId = 0;
+    }
 
     public ObjectId getObjectId() {
         return objectId;
@@ -81,11 +94,23 @@ public class UserSessionModel extends CommonModel {
         this.refreshToken = refreshToken;
     }
 
-    public String getCompanyRouteId() {
+    public int getCompanyRouteId() {
         return companyRouteId;
     }
 
-    public void setCompanyRouteId(String companyRouteId) {
+    public void setCompanyRouteId(int companyRouteId) {
         this.companyRouteId = companyRouteId;
+    }
+
+    public JsonObject toJson() {
+        JsonObject obj = new JsonObject();
+        obj.add(ParamConstant.USER_ID, getUserId());
+        obj.add(ParamConstant.USER_ACCESS_TOKEN, getToken());
+        return obj;
+    }
+
+    @Override
+    public String toString() {
+        return toJson().toString();
     }
 }

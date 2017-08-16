@@ -13,3 +13,4 @@ GET         /test/postgre/connection                    controllers.PostgreContr
 GET         /test/postgre/createDB/:databaseName        controllers.PostgreController.createDatabase(databaseName:String)
 
 POST        /user/create                                controllers.UserController.createUser()
+POST        /user/login                                 controllers.UserController.userLogIn()

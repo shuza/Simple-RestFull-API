@@ -10,6 +10,6 @@ public class ParamConstant {
     public static String USER_PHONE = "userPhone";
     public static String USER_COMPANY_ID = "companyId";
     public static String USER_ACCESS_ROLE = "userAccessRole";
-
+    public static String USER_ACCESS_TOKEN = "token";
 
 }

@@ -20,7 +20,7 @@ public class UserSessionDao {
         return userSessionDao;
     }
 
-    public boolean createUserSession(UserSessionModel sessionModel) {
+    public boolean save(UserSessionModel sessionModel) {
         try {
             datastore.save(sessionModel);
             return true;

@@ -4,7 +4,6 @@ import models.UserModel;
 import org.mongodb.morphia.Datastore;
 import utils.LogUtil;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class UserDao {
@@ -33,10 +32,10 @@ public class UserDao {
         return false;
     }
 
-    public UserModel logIn(String username, String password) {
+    public UserModel logIn(String email, String password) {
         try {
             List<UserModel> userModels = datastore.createQuery(UserModel.class)
-                    .field("name").equal(username)
+                    .field("email").equal(email)
                     .field("password").equal(password)
                     .asList();
             if (userModels.size() > 0) {
@@ -47,6 +46,22 @@ public class UserDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean isExistingUser(String email) {
+        try {
+            List<UserModel> userModels = datastore.createQuery(UserModel.class)
+                    .field("email").equal(email)
+                    .asList();
+            if (userModels != null && userModels.size() > 0) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            LogUtil.printLogMessage("is_existing_user", "error", e.getMessage());
+            e.printStackTrace();
+        }
+        return true;
     }
 
 }
