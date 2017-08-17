@@ -59,7 +59,7 @@ public class UserController extends Controller {
 
                 result.add(ResponseConstant.PARAMS_RESPONSE_CODE, ResponseConstant.RESPONSE_CODE_SUCCESS);
                 result.add(ResponseConstant.PARAMS_RESPONSE_MESSAGE, "login success");
-                result.add(ResponseConstant.PARAMS_RESPONSE_DATA, userSessionModel.toString());
+                result.add(ResponseConstant.PARAMS_RESPONSE_DATA, userSessionModel.toJson());
             } else {
                 result.add(ResponseConstant.PARAMS_RESPONSE_CODE, ResponseConstant.RESPONSE_CODE_FAILED);
                 result.add(ResponseConstant.PARAMS_RESPONSE_MESSAGE, "Invalid email or password");
