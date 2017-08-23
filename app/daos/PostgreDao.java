@@ -14,16 +14,11 @@ public class PostgreDao {
     public static Connection connect(String dbName) {
         try {
             String url = "jdbc:postgresql://" + PostgreSqlSetting.HOST + ":"
-                    + PostgreSqlSetting.PORT + "/" + dbName;
+                    + PostgreSqlSetting.PORT + "/" + PostgreSqlSetting.DB_NAME;
             Properties props = new Properties();
             props.setProperty("user", PostgreSqlSetting.USER_NAME);
             props.setProperty("password", PostgreSqlSetting.PASSWORD);
-            //props.setProperty("ssl", "true");
             Connection connection = DriverManager.getConnection(url, props);
-
-            /*Connection connection = DriverManager.getConnection(url,
-                    PostgreSqlSetting.USER_NAME,
-                    PostgreSqlSetting.PASSWORD);*/
 
             LogUtil.printLogMessage(PostgreDao.class.getSimpleName(), "PostgreSQL connected successfully");
 
@@ -39,7 +34,7 @@ public class PostgreDao {
     public static boolean createDatabase(String databaseName) {
         try {
             Connection connection = connect("");
-            PreparedStatement preparedStatement = connection.prepareStatement("CREATE DATABASE "+databaseName);
+            PreparedStatement preparedStatement = connection.prepareStatement("CREATE DATABASE " + databaseName);
             int resultId = preparedStatement.executeUpdate();
 
             LogUtil.printLogMessage(PostgreDao.class.getSimpleName(), databaseName + " database created successfully");

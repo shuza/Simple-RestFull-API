@@ -1,8 +1,8 @@
-lazy val root = project.in(file(".")).enablePlugins(PlayJava)
+name := """tillbox-webapp"""
 
-name := "just-play-java"
+version := "0.1"
 
-version := "1.0-SNAPSHOT"
+lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 libraryDependencies ++= Seq(
   jdbc,

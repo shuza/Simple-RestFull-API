@@ -2,9 +2,15 @@ package security;
 
 import org.apache.commons.codec.binary.Base64;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class Generator {
+
+    public static String createRandomCompanyId() {
+        Random random = new Random();
+        return String.valueOf(random.nextInt());
+    }
 
     public static String createAccessToken() {
         return encryptToBase64(UUID.randomUUID().toString().replace("-", String.valueOf(Math.random())));

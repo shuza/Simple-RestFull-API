@@ -64,4 +64,19 @@ public class UserDao {
         return true;
     }
 
+    public UserModel getUserInfo(String email) {
+        try {
+            List<UserModel> userModels = datastore.createQuery(UserModel.class)
+                    .field("email").equal(email)
+                    .asList();
+            if (userModels != null && userModels.size() > 0) {
+                return userModels.get(0);
+            }
+        } catch (Exception e) {
+            LogUtil.printLogMessage("get_user_info", "error", e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

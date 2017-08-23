@@ -1,5 +1,7 @@
 package models;
 
+import com.eclipsesource.json.JsonObject;
+import constants.ParamConstant;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -79,5 +81,20 @@ public class UserModel {
 
     public void setAccessRole(int accessRole) {
         this.accessRole = accessRole;
+    }
+
+    public JsonObject toJson() {
+        JsonObject obj = new JsonObject();
+        obj.add(ParamConstant.USER_ID, getEmail());
+        obj.add(ParamConstant.USER_NAME, getName());
+        obj.add(ParamConstant.USER_SUR_NAME, getSurName());
+        obj.add(ParamConstant.USER_COMPANY_ID, getCompanyId());
+        obj.add(ParamConstant.USER_PHONE, getPhone());
+        return obj;
+    }
+
+    @Override
+    public String toString() {
+        return toJson().toString();
     }
 }
